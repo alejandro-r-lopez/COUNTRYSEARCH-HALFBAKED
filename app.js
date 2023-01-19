@@ -21,6 +21,9 @@ window.addEventListener('load', async () => {
     // Slice B: call asynchronous getContinents fetch function and set to response variable
     // Slice B: set the continents state to the response.data
     // Slice B: call displayContinentOptions function;
+    const response = await getContinents();
+    continents = response.data;
+    displayContinentOptions();
 });
 
 async function findCountries(continent) {
@@ -55,6 +58,8 @@ function displayCountries() {
 
 function displayContinentOptions() {
     for (const continent of continents) {
+        const makeContinent = renderContinentOption(continent);
+        continentSelect.append(makeContinent);
         // Slice B: Call continent render function and append to continent selector
     }
 }
